@@ -1,0 +1,312 @@
+*{
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+}
+header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    margin: auto;
+    z-index: 100;
+    position: relative;
+}
+header a{
+    margin-left: 60px;
+}
+nav{
+    margin-left: 70px;
+}
+.caurosel{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    margin-top: -50px;
+}
+.caurosel .list .item{
+    position: absolute;
+    inset: 0 0 0 0;
+}
+.caurosel .list .item img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.content{
+    position: absolute;
+    width: 100%;
+    max-width: 80%;
+    box-sizing: border-box;
+    top: 20%;
+    left: 5%;
+}
+.content > .author{
+    font-size: clamp(10px, 1vw, 18px);
+    padding-left: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+.content > .title{
+    font-size: clamp(16px, 10vw, 60px);
+    width: 500px;
+    color: orange;
+    font-weight: bold;
+}
+.content > .topic{
+    font-size: clamp(10px, 10vw, 25px);
+    box-sizing: border-box;
+}
+.content > .description{
+    font-size: clamp(8px, 1vw, 16px);
+    font-weight: 300;
+    margin-top: 15px;
+    width: 600px;
+    margin-bottom: 20px;
+}
+.btn2{
+    color: white;
+    background-color: transparent;
+    border: solid 1px white;
+    padding: 5px 10px;
+    margin-right: 2px;
+    letter-spacing: 3px;
+    transition: 0.25s;
+}
+.btn1{
+    background-color: #eee;
+    color: #555;
+    border: solid 1px white;
+    padding: 5px 10px;
+    margin-right: 2px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+.content > button:hover{
+    cursor: pointer;
+    background-color: #eee;
+    color: #555;
+}
+.thumbnail{
+    display: flex;
+    position: absolute;
+    left: 55%;
+    bottom: 50px;
+    width: 600px;
+    height: 200px;
+    gap: 20px;
+    z-index: 2;
+}
+.thumbnail .item{
+    position: relative;
+    height: 220px;
+    width: 150px;
+    flex-shrink: 0px;
+}
+.thumbnail .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.thumbnail .item .content .title{
+    font-size: clamp(14px, 3vw, 20px);
+    position: absolute;
+    bottom: -150px;
+    color: #eee;
+}
+.thumbnail .item .content .description{
+    font-size: clamp(8px, 1vw, 16px);
+    position: absolute;   
+    bottom: -190px;
+}
+.arrow{
+    position: absolute;
+    top:85%;
+    right: 45%;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.arrow button{
+    background-color: #eee4;
+    font-family: monospace;
+    font-size: large;
+    color: #eee;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    padding-bottom: 5px;
+    font-size: clamp(14px, 5vw, 25px);
+    transition: 0.25s;
+    max-width: 80%;
+    z-index: 100;
+}
+.arrow button:hover{
+    cursor: pointer;
+    background-color: #eee;
+    color: #555;
+}
+.arrow button:active{
+    background-color: #eeeeee98;
+}
+.caurosel .list .item:nth-child(1){
+    z-index: 1;
+}
+.caurosel .list .item:nth-child(1) .author,
+.caurosel .list .item:nth-child(1) .title,
+.caurosel .list .item:nth-child(1) .topic,
+.caurosel .list .item:nth-child(1) .description,
+.caurosel .list .item:nth-child(1) button{
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent 0.5s 1s linear 1 forwards;
+}
+@keyframes showContent {
+    to{
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+    
+}
+.caurosel .list .item:nth-child(1) .title{
+    animation-delay: 1.2s;
+}
+.caurosel .list .item:nth-child(1) .topic{
+    animation-delay: 1.4s;
+}
+.caurosel .list .item:nth-child(1) .description{
+ animation-delay: 1.6s;
+}
+.caurosel .list .item:nth-child(1) button{
+  animation-delay: 1.8s;
+}
+.caurosel.next .list .item:nth-child(1) img{
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    border-radius: 20px;
+    left: 55%;
+    bottom:30px;
+    animation: showImage 0.5s linear 1 forwards;
+}
+@keyframes showImage {
+    to{
+        width: 100%;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+}
+.caurosel.next .thumbnail .item:nth-last-child(1){
+    width: 0;
+    overflow: hidden;
+    animation: showThumbnail 0.5s linear 1 forwards;
+}
+@keyframes showThumbnail{
+    to{
+        width: 150px;
+    }
+}
+ .caurosel.next .thumbnail{
+    transform: translateX(150px);
+    animation: transformThumbnail 0.5s linear 1 forwards;
+}
+@keyframes transformThumbnail {
+    to{
+        transform: translateX(0);
+        }
+}
+.caurosel.prev .list .item:nth-child(2){
+    z-index: 2;
+}
+.caurosel.prev .list .item:nth-child(2) img{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: outImage 0.5s linear 1 forwards;
+}
+@keyframes outImage {
+    to{
+        width: 130px;
+        height: 220px;
+        border-radius: 20px;
+        left: 55%;
+        bottom: 30px;
+    }
+} 
+.caurosel.prev .thumbnail .item:nth-child(1){
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    animation: inImage 0.5s linear 1 forwards;
+} 
+@keyframes inImage{
+    to{
+        width: 150px;
+    }
+}
+.caurosel.prev .list .item:nth-child(2) .author,
+.caurosel.prev .list .item:nth-child(2) .title,
+.caurosel.prev .list .item:nth-child(2) .topic,
+.caurosel.prev .list .item:nth-child(2) .description,
+.caurosel.prev .list .item:nth-child(2) button{
+    animation: outAnimation 0.5s linear 1 forwards;
+}
+@keyframes outAnimation{
+    to{
+        filter: blur(20px);
+        transform: translateY(150px);
+        opacity: 0;
+    }
+}
+.caurosel.next .arrow button,
+.caurosel.prev .arrow button{
+    pointer-events: none;
+}
+.time{
+    position: absolute;
+    background-color: orange;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    z-index: 100;
+}
+.caurosel.next .time,
+.caurosel.prev .time{
+    width: 100%;
+    animation: timeRunning 2s linear 1 forwards;  
+}
+@keyframes timeRunning {
+    to{
+        width: 0;
+    }
+}
+@media screen and (max-width: 678px){
+  .caurosel .list .item .content{
+    padding: 0;
+  }
+  .caurosel .list .item .content .title{
+    font-size: 30px;
+  }
+  .caurosel .list .item .content .description{
+    width: 300px;
+  }
+  .caurosel .arrow{
+    left: 15%;
+  }
+  header a{
+    margin-left: 50px;
+  }
+  nav{
+    margin-left: 0px;
+  }
+}
